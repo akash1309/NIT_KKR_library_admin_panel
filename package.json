@@ -1,0 +1,15 @@
+{
+  "name": "nitkkrlibrary",
+  "version": "1.0.0",
+  "description": "NIT KKR Library Panel",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Akash Goyal",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4",
+    "mysql": "^2.16.0"
+  }
+}
