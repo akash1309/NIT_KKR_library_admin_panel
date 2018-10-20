@@ -1,22 +1,24 @@
-var mysql   = require('mysql');
-var express = require('express');
-var app     = express();
+var express          = require('express');
+var app              = express();
+const bodyParser     = require('body-parser');
+const cors           = require('cors');
 
-var con = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "goyalanshu",
-  database: "NIT_KKR"
-});
+var db = require('./app/dbconnection');
 
-con.connect(function(err) {
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors({origin: '*'}));
+
+//Checking database connection;
+db.connect(function(err) {
   if (err){
-    console.error('error connecting: ' + err.stack);
+    console.error('Error connecting database: ' + err.stack);
     return;
   }
-
-  //require('./app/routes')(app, database);
-  console.log("Connected!");
+  else{
+    console.log("Database Connected!");
+  }
 });
 
+require('./app/routes')(app);
 app.listen(8080);

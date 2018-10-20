@@ -1,5 +1,8 @@
-const insert = require("./../controllers/insert_into");
+const createTables = require("./../controllers/createTables");
+const logins = require("./../controllers/Logins");
 
-module.exports = function(app, db) {
-  app.post('/insert', insert);
+module.exports = function(app) {
+  app.get('/', createTables);
+  app.get('/users', logins.getAll);
+  app.post('/user', logins.addUser);
 }
