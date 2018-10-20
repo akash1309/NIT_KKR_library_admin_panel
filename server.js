@@ -14,6 +14,8 @@ con.connect(function(err) {
     console.error('error connecting: ' + err.stack);
     return;
   }
+
+  //require('./app/routes')(app, database);
   console.log("Connected!");
 });
 
