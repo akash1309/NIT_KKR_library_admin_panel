@@ -4,12 +4,12 @@ const courses      = require("./../controllers/courses");
 
 module.exports = function(app) {
   app.get('/', createTables);
-  app.get('/users', logins.getAll);
+  app.get('/users', logins.getUsers);
   app.post('/user', logins.addUser);
-  app.post('/addrow', courses.addRow);
-  app.get('/getrows',courses.getAllRows);
-  app.get('/codename/:code',courses.wherecode);
-  app.get('/course_name/:course_name',courses.wherecourse_name);
-  app.get('/author/:author',courses.whereauthor);
-  app.delete('/del/:code',courses.delete);
+  app.get('/courses',courses.getCourses);
+  app.post('/course', courses.addCourse);
+  app.get('/course/code/:code',courses.findByCourseCode);
+  app.get('/course/name/:name',courses.findByCourseName);
+  app.get('/course/author/:author',courses.findByCourseAuthor);
+  app.delete('/course/code/:code',courses.deleteByCourseCode);
 }

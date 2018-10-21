@@ -2,7 +2,7 @@ var db = require('./../dbconnection');
 
 var Logins = {
 
-  getAll : function(req, res){
+  getUsers : function(req, res){
     var sql = "select * from logins;";
     db.query(sql, function (err, user) {
       if (err) {

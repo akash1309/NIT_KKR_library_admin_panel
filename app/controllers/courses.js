@@ -2,7 +2,7 @@ var db = require('./../dbconnection');
 
 var courses = {
 
-  getAllRows : function(req, res){
+  getCourses : function(req, res){
     var sql = "select * from course order_by;";
     db.query(sql, function (err, user) {
       if (err) {
@@ -15,8 +15,8 @@ var courses = {
     });
   },
 
-  wherecode : function(req, res){
-    var sql = "select * from course where code = "+ req.params.code +" order_by;";
+  findByCourseCode : function(req, res){
+    var sql = "select * from course where code = '"+ req.params.code +"';";
     db.query(sql, function (err, user) {
       if (err) {
         return res.status(500).send({
@@ -28,8 +28,8 @@ var courses = {
     });
   },
 
-  wherecourse_name : function(req, res){
-    var sql = "select * from course where course_name = "+ req.params.course_name +" order_by;";
+  findByCourseName : function(req, res){
+    var sql = "select * from course where course_name = '" + req.params.name + "';";
     db.query(sql, function (err, user) {
       if (err) {
         return res.status(500).send({
@@ -41,7 +41,7 @@ var courses = {
     });
   },
 
-  whereauthor : function(req, res){
+  findByCourseAuthor : function(req, res){
     var sql = "select * from course where author = "+ req.params.author +" order_by;";
     db.query(sql, function (err, user) {
       if (err) {
@@ -67,7 +67,7 @@ var courses = {
     });
   },
 
-  delete : function(req, res){
+  deleteByCourseCode : function(req, res){
     var sql = "delete from course where code=" + req.params.code +";";
     db.query(sql, function (err, user) {
       if (err) {
@@ -80,7 +80,7 @@ var courses = {
     });
   },
 
-  addRow : function(req, res){
+  addCourse : function(req, res){
     var sql = "insert into course values('" + req.body.name + "','" + req.body.course_name + "','" + req.body.author + "','" + req.body.code + "');";
     db.query(sql, function (err, user) {
       if (err) {
