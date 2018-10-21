@@ -5,6 +5,7 @@ const courses      = require("./../controllers/courses");
 module.exports = function(app) {
   app.get('/', createTables);
   app.get('/users/:name/password/:password', logins.getUsers);
+  app.get('/admin',logins.getAdmin);
   app.post('/user', logins.addUser);
   app.get('/courses',courses.getCourses);
   app.post('/course', courses.addCourse);
