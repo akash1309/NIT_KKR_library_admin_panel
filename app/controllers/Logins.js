@@ -11,6 +11,11 @@ var Logins = {
           "error" : err
         });
       }
+      if(user.length == 0){
+              return res.status(404).send({
+                  "message": "No User found"
+              });
+          }
       else res.status(200).send(user);
     });
   },

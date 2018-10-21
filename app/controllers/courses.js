@@ -11,6 +11,11 @@ var courses = {
           "error" : err
         });
       }
+      if(user.length == 0){
+              return res.status(404).send({
+                  "message": "No Data found"
+              });
+          }
       else res.status(200).send(user);
     });
   },
@@ -24,6 +29,11 @@ var courses = {
           "error" : err
         });
       }
+      if(user.length == 0){
+              return res.status(404).send({
+                  "message": "No Data found"
+              });
+          }
       else res.status(200).send(user);
     });
   },
@@ -37,6 +47,11 @@ var courses = {
           "error" : err
         });
       }
+      if(user.length == 0){
+              return res.status(404).send({
+                  "message": "No Data found"
+              });
+          }
       else res.status(200).send(user);
     });
   },
@@ -50,6 +65,11 @@ var courses = {
           "error" : err
         });
       }
+      if(user.length == 0){
+              return res.status(404).send({
+                  "message": "No Data found"
+              });
+          }
       else res.status(200).send(user);
     });
   },
