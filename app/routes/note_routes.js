@@ -4,7 +4,7 @@ const courses      = require("./../controllers/courses");
 
 module.exports = function(app) {
   app.get('/', createTables);
-  app.get('/users', logins.getUsers);
+  app.get('/users/:name/password/:password', logins.getUsers);
   app.post('/user', logins.addUser);
   app.get('/courses',courses.getCourses);
   app.post('/course', courses.addCourse);

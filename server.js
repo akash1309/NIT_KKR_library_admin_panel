@@ -21,4 +21,4 @@ db.connect(function(err) {
 });
 
 require('./app/routes')(app);
-app.listen(8080);
+app.listen(8000);

@@ -3,7 +3,7 @@ var db = require('./../dbconnection');
 var Logins = {
 
   getUsers : function(req, res){
-    var sql = "select * from logins;";
+    var sql = "select * from logins where name ='" + req.params.name + "' AND password = '" + req.params.password + "';";
     db.query(sql, function (err, user) {
       if (err) {
         return res.status(500).send({
