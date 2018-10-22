@@ -21,7 +21,7 @@ var courses = {
   },
 
   findByCourseCode : function(req, res){
-    var sql = "select * from course where code = '"+ req.params.code +"';";
+    var sql = "select * from course where Course_ID = '"+ req.params.course_id +"';";
     db.query(sql, function (err, user) {
       if (err) {
         return res.status(500).send({
@@ -38,8 +38,8 @@ var courses = {
     });
   },
 
-  findByCourseName : function(req, res){
-    var sql = "select * from course where course_name = '" + req.params.name + "';";
+  findByDisciplineName : function(req, res){
+    var sql = "select * from course where Discipline_Name = '" + req.params.discipline_name + "';";
     db.query(sql, function (err, user) {
       if (err) {
         return res.status(500).send({
@@ -57,7 +57,25 @@ var courses = {
   },
 
   findByCourseAuthor : function(req, res){
-    var sql = "select * from course where author = "+ req.params.author +" order_by;";
+    var sql = "select * from course where Professor_Name = "+ req.params.professor_name +" order_by;";
+    db.query(sql, function (err, user) {
+      if (err) {
+        return res.status(500).send({
+          "message" : "Error fetching Data!",
+          "error" : err
+        });
+      }
+      if(user.length == 0){
+              return res.status(404).send({
+                  "message": "No Data found"
+              });
+          }
+      else res.status(200).send(user);
+    });
+  },
+
+  findByCourseName : function(req, res){
+    var sql = "select * from course where Course_Name = "+ req.params.course_name +" order_by;";
     db.query(sql, function (err, user) {
       if (err) {
         return res.status(500).send({
@@ -88,7 +106,7 @@ var courses = {
   },
 
   deleteByCourseCode : function(req, res){
-    var sql = "delete from course where code='" + req.params.code +"';";
+    var sql = "delete from course where Course_ID ='" + req.params.course_id +"';";
     db.query(sql, function (err, user) {
       if (err) {
         return res.status(500).send({
@@ -101,7 +119,7 @@ var courses = {
   },
 
   addCourse : function(req, res){
-    var sql = "insert into course values('" + req.body.name + "','" + req.body.course_name + "','" + req.body.author + "','" + req.body.code + "');";
+    var sql = "insert into course values('" + req.body.course_id + "','" + req.body.discipline_name + "','" + req.body.course_name + "','" + req.body.professor_name + "','" + req.body.phase + "');";
     db.query(sql, function (err, user) {
       if (err) {
         return res.status(500).send({

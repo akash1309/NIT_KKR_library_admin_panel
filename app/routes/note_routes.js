@@ -10,6 +10,7 @@ module.exports = function(app) {
   app.get('/courses',courses.getCourses);
   app.post('/course', courses.addCourse);
   app.get('/course/code/:code',courses.findByCourseCode);
+  app.get('/discipline/name/:name',courses.findByDisciplineName);
   app.get('/course/name/:name',courses.findByCourseName);
   app.get('/course/author/:author',courses.findByCourseAuthor);
   app.delete('/course/code/:code',courses.deleteByCourseCode);
