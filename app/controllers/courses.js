@@ -88,15 +88,15 @@ var courses = {
   },
 
   deleteByCourseCode : function(req, res){
-    var sql = "delete from course where code=" + req.params.code +";";
+    var sql = "delete from course where code='" + req.params.code +"';";
     db.query(sql, function (err, user) {
       if (err) {
         return res.status(500).send({
-          "message" : "Error fetching Data!",
+          "message" : "Error deleting Data!",
           "error" : err
         });
       }
-      else res.status(200).send(user);
+      else res.status(200).send("Data Successfully Deleted");
     });
   },
 
