@@ -9,9 +9,12 @@ module.exports = function(app) {
   app.post('/user', logins.addUser);
   app.get('/courses',courses.getCourses);
   app.post('/course', courses.addCourse);
-  app.get('/course/code/:code',courses.findByCourseCode);
-  app.get('/discipline/name/:name',courses.findByDisciplineName);
-  app.get('/course/name/:name',courses.findByCourseName);
-  app.get('/course/author/:author',courses.findByCourseAuthor);
-  app.delete('/course/code/:code',courses.deleteByCourseCode);
+  app.get('/course/code/:course_id',courses.findByCourseCode);
+  app.get('/discipline/name/:discipline_name',courses.findByDisciplineName);
+  app.get('/course/name/:course_name',courses.findByCourseName);
+  app.get('/course/author/:professor_name',courses.findByCourseAuthor);
+  app.delete('/course/code/:course_id',courses.deleteByCourseCode);
+  app.get('/discipline/getAll',courses.getAllDiscipline);
+  app.get('/course/getAll',courses.getAllCourse);
+  app.get('/professor/getAll',courses.getAllProfessor);
 }

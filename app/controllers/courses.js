@@ -20,6 +20,61 @@ var courses = {
     });
   },
 
+  getAllDiscipline : function(req, res){
+    var sql = "select Discipline_Name from course order_by;";
+    db.query(sql, function (err, user) {
+      if (err) {
+        return res.status(500).send({
+          "message" : "Error fetching Data!",
+          "error" : err
+        });
+      }
+      if(user.length == 0){
+              return res.status(404).send({
+                  "message": "No Data found"
+              });
+          }
+      else res.status(200).send(user);
+    });
+  },
+
+  getAllCourse : function(req, res){
+    var sql = "select Course_Name from course order_by;";
+    db.query(sql, function (err, user) {
+      if (err) {
+        return res.status(500).send({
+          "message" : "Error fetching Data!",
+          "error" : err
+        });
+      }
+      if(user.length == 0){
+              return res.status(404).send({
+                  "message": "No Data found"
+              });
+          }
+      else res.status(200).send(user);
+    });
+  },
+
+  getAllProfessor : function(req, res){
+    var sql = "select Professor_Name from course order_by;";
+    db.query(sql, function (err, user) {
+      if (err) {
+        return res.status(500).send({
+          "message" : "Error fetching Data!",
+          "error" : err
+        });
+      }
+      if(user.length == 0){
+              return res.status(404).send({
+                  "message": "No Data found"
+              });
+          }
+      else res.status(200).send(user);
+    });
+  },
+
+
   findByCourseCode : function(req, res){
     var sql = "select * from course where Course_ID = '"+ req.params.course_id +"';";
     db.query(sql, function (err, user) {
