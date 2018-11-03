@@ -17,4 +17,5 @@ module.exports = function(app) {
   app.get('/discipline/getAll',courses.getAllDiscipline);
   app.get('/course/getAll',courses.getAllCourse);
   app.get('/professor/getAll',courses.getAllProfessor);
+  app.get('/professor/:professor_name/course/:course_name',courses.findlink);
 }

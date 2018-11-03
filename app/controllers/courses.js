@@ -112,7 +112,25 @@ var courses = {
   },
 
   findByCourseAuthor : function(req, res){
-    var sql = "select * from course where Professor_Name = "+ req.params.professor_name +" order_by;";
+    var sql = "select * from course where Professor_Name = '"+ req.params.professor_name +"' order_by;";
+    db.query(sql, function (err, user) {
+      if (err) {
+        return res.status(500).send({
+          "message" : "Error fetching Data!",
+          "error" : err
+        });
+      }
+      if(user.length == 0){
+              return res.status(404).send({
+                  "message": "No Data found"
+              });
+          }
+      else res.status(200).send(user);
+    });
+  },
+
+  findLink : function(req, res){
+    var sql = "select Course_ID , Phase from course where Professor_Name = '"+ req.params.professor_name +"' AND Course_Name = '"+ req.params.course_name +"';";
     db.query(sql, function (err, user) {
       if (err) {
         return res.status(500).send({
@@ -130,7 +148,7 @@ var courses = {
   },
 
   findByCourseName : function(req, res){
-    var sql = "select * from course where Course_Name = "+ req.params.course_name +" order_by;";
+    var sql = "select * from course where Course_Name = '"+ req.params.course_name +"' order_by;";
     db.query(sql, function (err, user) {
       if (err) {
         return res.status(500).send({
