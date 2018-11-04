@@ -143,7 +143,7 @@ var courses = {
                   "message": "No Data found"
               });
           }
-      else res.status(200).send(user);
+      else res.status(200).send(user[0]);
     });
   },
 
