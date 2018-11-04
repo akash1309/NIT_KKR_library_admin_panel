@@ -3,7 +3,7 @@ var db = require('./../dbconnection');
 var courses = {
 
   getCourses : function(req, res){
-    var sql = "select * from course order_by;";
+    var sql = "select * from course ORDER BY Course_Name;";
     db.query(sql, function (err, user) {
       if (err) {
         return res.status(500).send({
@@ -21,7 +21,7 @@ var courses = {
   },
 
   getAllDiscipline : function(req, res){
-    var sql = "select Discipline_Name from course order_by;";
+    var sql = "select * from course ORDER BY Discipline_Name;";
     db.query(sql, function (err, user) {
       if (err) {
         return res.status(500).send({
@@ -39,7 +39,7 @@ var courses = {
   },
 
   getAllCourse : function(req, res){
-    var sql = "select Course_Name from course order_by;";
+    var sql = "select Course_Name from course ORDER BY Course_Name;";
     db.query(sql, function (err, user) {
       if (err) {
         return res.status(500).send({
@@ -57,7 +57,7 @@ var courses = {
   },
 
   getAllProfessor : function(req, res){
-    var sql = "select Professor_Name from course order_by;";
+    var sql = "select Professor_Name from course ORDER BY Professor_Name;";
     db.query(sql, function (err, user) {
       if (err) {
         return res.status(500).send({
@@ -112,7 +112,7 @@ var courses = {
   },
 
   findByCourseAuthor : function(req, res){
-    var sql = "select * from course where Professor_Name = '"+ req.params.professor_name +"' order_by;";
+    var sql = "select * from course where Professor_Name = '"+ req.params.professor_name +"';";
     db.query(sql, function (err, user) {
       if (err) {
         return res.status(500).send({
@@ -148,7 +148,7 @@ var courses = {
   },
 
   findByCourseName : function(req, res){
-    var sql = "select * from course where Course_Name = '"+ req.params.course_name +"' order_by;";
+    var sql = "select * from course where Course_Name = '"+ req.params.course_name +"' ORDER BY Professor_Name;";
     db.query(sql, function (err, user) {
       if (err) {
         return res.status(500).send({
