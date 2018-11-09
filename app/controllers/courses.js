@@ -1,6 +1,6 @@
 var db = require('./../dbconnection');
 var dir = require('node-dir');
-const testFolder = '/Users/loanframe/CodingStuff/NIT_KKR_library_admin_panel/app/Videos';
+const testFolder = '/Volumes/MacOS/new/';
 
 var courses = {
 
@@ -207,9 +207,20 @@ var courses = {
   },
 
   listFilesInFolder: function(req, res){
-
-    var files = dir.files('/Users/loanframe/CodingStuff/NIT_KKR_library_admin_panel/app/Videos', {sync:true});
-    console.log(files);
+      var link=testFolder
+       var id=req.params.course_id
+       console.log(id);
+       link= link + id
+       var files = dir.files(link , {sync:true});
+       if(files.length !=0){
+         return res.status(200).send({files});
+        }
+       else {
+         return res.status(500).send({
+           "message" : "No data found"
+         });
+        }
+    //  console.log(files);
 
   }
 
