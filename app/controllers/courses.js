@@ -1,4 +1,6 @@
 var db = require('./../dbconnection');
+var dir = require('node-dir');
+const testFolder = '/Users/loanframe/CodingStuff/NIT_KKR_library_admin_panel/app/Videos';
 
 var courses = {
 
@@ -202,6 +204,13 @@ var courses = {
       }
       else res.status(200).send("Data Successfully Added.");
     });
+  },
+
+  listFilesInFolder: function(req, res){
+
+    var files = dir.files('/Users/loanframe/CodingStuff/NIT_KKR_library_admin_panel/app/Videos', {sync:true});
+    console.log(files);
+
   }
 
 
