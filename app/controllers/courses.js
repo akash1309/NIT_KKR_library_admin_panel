@@ -1,6 +1,7 @@
 var db = require('./../dbconnection');
 var dir = require('node-dir');
-const testFolder = '/Volumes/MacOS/new/';
+//const testFolder = '/Volumes/MacOS/new/';
+const testFolder = '/Users/loanframe/CodingStuff/NIT_KKR_library_admin_panel/WebPortal/Videos';
 
 var courses = {
 
@@ -208,9 +209,9 @@ var courses = {
 
   listFilesInFolder: function(req, res){
       var link=testFolder
-       var id=req.params.course_id
-       console.log(id);
-       link= link + id
+       //var id=req.params.course_id
+       //console.log(id);
+       //link= link + id
        var files = dir.files(link , {sync:true});
        if(files.length !=0){
          return res.status(200).send({files});
